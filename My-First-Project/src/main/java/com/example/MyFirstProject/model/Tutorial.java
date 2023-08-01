@@ -1,16 +1,16 @@
 package com.example.MyFirstProject.model;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "MyFirstProject")
-
 public class Tutorial {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,14 +24,25 @@ public class Tutorial {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "title")
+    private String title;
 
-    public Tutorial(Long id, String firstname, String lastname, String password) {
-        this.id = id;
+    @Column(name = "description")
+    private String description;
+
+    public Tutorial() {
+        // Empty constructor required for JPA
+    }
+
+    public Tutorial(String firstname, String lastname, String password, String title, String description) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.title = title;
+        this.description = description;
     }
 
+    // Getters and setters for all properties
 
     public Long getId() {
         return id;
@@ -47,6 +58,14 @@ public class Tutorial {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setId(Long id) {
@@ -65,29 +84,17 @@ public class Tutorial {
         this.password = password;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString() {
         return "Tutorial [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", password=" + password
-                + "]";
+                + ", title=" + title + ", description=" + description + "]";
     }
-
-
-    public Object getTitle() {
-        return null;
-    }
-
-
-    public Object getDescription() {
-        return null;
-    }
-
-
-    public void setTitle(Object title) {
-    }
-
-
-    public void setDescription(Object description) {
-    }
-
 }
